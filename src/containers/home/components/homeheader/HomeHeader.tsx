@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { SearchBar } from '@/components/searchBar/SearchBar';
 import { Title } from '@/components/Title/Title';
 import { TabSelector } from '../tabselector/TabSelector';
@@ -19,7 +19,9 @@ export function HomeHeader<T extends string, ItemT>({
     <>
       <Title title={title} />
 
-      <SearchBar />
+      <View style={styles.searchBarContainer}>
+        <SearchBar />
+      </View>
 
       <FlatList
         data={popularMovies}

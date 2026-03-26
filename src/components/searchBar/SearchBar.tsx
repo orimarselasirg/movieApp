@@ -1,14 +1,33 @@
 import { Text, View, StyleSheet, TextInput } from "react-native"
+import { SvgIcon } from "../svgicon";
 
-export const SearchBar = () => {
+interface SearchBarProps {
+  value?: string;
+  onChangeText?: (text: string) => void;
+  placeholder?: string;
+}
+
+export const SearchBar: React.FC<SearchBarProps> = ({
+  value,
+  onChangeText,
+  placeholder = "Search",
+}) => {
   return (
     <View style={styles.searchContainer}>
       <TextInput
         style={styles.searchInput}
-        placeholder="Search"
+        placeholder={placeholder}
         placeholderTextColor="#67686D"
+        value={value}
+        onChangeText={onChangeText}
       />
-      <Text style={styles.searchIcon}>🔍</Text>
+      <Text style={styles.searchIcon}>
+        <SvgIcon
+          name="search"
+          color="#67686D"
+          size={26}
+        />
+      </Text>
     </View>
   );
 }
@@ -18,8 +37,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor:'#3A3F47',
-    marginHorizontal: 20,
-    marginVertical: 10,
     borderRadius: 16,
     paddingHorizontal: 20,
     height: 50,
