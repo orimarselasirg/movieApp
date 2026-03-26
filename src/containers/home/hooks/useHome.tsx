@@ -17,53 +17,34 @@ export const useHome = () => {
   const [upcoming, setUpcoming] = useState<Result[]>([]);
   const [topRated, setTopRated] = useState<Result[]>([]);
   const [selectedTab, setSelectedTab] = useState<TabType>("now_playing");
-  const [loading, setLoading] = useState(true);
-  const [loadingMore, setLoadingMore] = useState(false);
-
-  // Páginas actuales para cada categoría
-  const [nowPlayingPage, setNowPlayingPage] = useState(1);
-  const [upcomingPage, setUpcomingPage] = useState(1);
-  const [topRatedPage, setTopRatedPage] = useState(1);
-
-  // Flags para saber si hay más páginas
-  const [hasMoreNowPlaying, setHasMoreNowPlaying] = useState(true);
-  const [hasMoreUpcoming, setHasMoreUpcoming] = useState(true);
-  const [hasMoreTopRated, setHasMoreTopRated] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [loadingMore, setLoadingMore] = useState<boolean>(false);
+  const [nowPlayingPage, setNowPlayingPage] = useState<number>(1);
+  const [upcomingPage, setUpcomingPage] = useState<number>(1);
+  const [topRatedPage, setTopRatedPage] = useState<number>(1);
+  const [hasMoreNowPlaying, setHasMoreNowPlaying] = useState<boolean>(true);
+  const [hasMoreUpcoming, setHasMoreUpcoming] = useState<boolean>(true);
+  const [hasMoreTopRated, setHasMoreTopRated] = useState<boolean>(true);
 
   const getMovies = async () => {
     try {
       setLoading(true);
       const [popularRes, nowPlayingRes, upcomingRes, topRatedRes] =
         await Promise.all([
-          axiosInstance.get('/movie/popular'),
-          axiosInstance.get('/movie/now_playing',
-            { params: 
-              { 
-                page: 1 
-              } 
-            }),
-          axiosInstance.get('/movie/upcoming', 
-            { params: 
-              { 
-                page: 1 
-              } 
-            }),
-          axiosInstance.get('/movie/top_rated', 
-            { params: 
-              { 
-                page: 1
-              } 
-            }),
+          // axiosInstance.get('/movie/popular'),
+          axiosInstance.get('/movie/now_playing', { params: { page: 1 }}),
+          // axiosInstance.get('/movie/upcoming', { params: { page: 1 }}),
+          // axiosInstance.get('/movie/top_rated', { params: { page: 1 }}),
         ]);
 
       setPopularMovies(popularRes.data.results.slice(0, 5));
-      setNowPlaying(nowPlayingRes.data.results);
-      setUpcoming(upcomingRes.data.results);
-      setTopRated(topRatedRes.data.results);
+      // setNowPlaying(nowPlayingRes.data.results);
+      // setUpcoming(upcomingRes.data.results);
+      // setTopRated(topRatedRes.data.results);
 
-      setHasMoreNowPlaying(nowPlayingRes.data.page < nowPlayingRes.data.total_pages);
-      setHasMoreUpcoming(upcomingRes.data.page < upcomingRes.data.total_pages);
-      setHasMoreTopRated(topRatedRes.data.page < topRatedRes.data.total_pages);
+      // setHasMoreNowPlaying(nowPlayingRes.data.page < nowPlayingRes.data.total_pages);
+      // setHasMoreUpcoming(upcomingRes.data.page < upcomingRes.data.total_pages);
+      // setHasMoreTopRated(topRatedRes.data.page < topRatedRes.data.total_pages);
 
       setLoading(false);
     } catch (error) {

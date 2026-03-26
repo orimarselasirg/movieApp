@@ -6,7 +6,3 @@ export const config = {
   appName: APP_NAME,
   environment: ENV,
 };
-
-// Ejemplo de uso:
-// import { config } from '@/config/env';
-// const response = await fetch(`${config.apiUrl}/movie/popular?api_key=${config.apiKey}`);
