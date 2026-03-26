@@ -14,7 +14,7 @@ function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{ marginTop: 30, flex: 1 }}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AppNavigator />
     </SafeAreaProvider>

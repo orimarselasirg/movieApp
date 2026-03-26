@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Home from '@/containers/home/Index';
 import SearchScreen from '@/containers/searchScreen/Index';
 import WatchScreen from '@/containers/watchScreen/Index';
+import { colors } from '@/theme/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,6 +16,7 @@ const AppNavigator = () => {
           headerShown: false,
           tabBarActiveTintColor: 'black',
           tabBarInactiveTintColor: 'gray',
+          sceneStyle: { backgroundColor: colors.background.primary },
           tabBarStyle: {
             paddingBottom: 5,
             paddingTop: 5,
