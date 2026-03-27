@@ -15,7 +15,7 @@ const MovieDetail = () => {
   const route = useRoute<MovieDetailRouteProp>();
   const { movieId } = route.params;
 
-  const { movie, loading, error } = useMovieDetail(movieId);
+  const { movie, trailerKey, loading, error } = useMovieDetail(movieId);
   const { isFavorite, toggleFavorite } = useFavorites(movieId);
 
   const handleBookmarkPress = () => {
@@ -73,6 +73,7 @@ const MovieDetail = () => {
           year={year}
           duration={movie.runtime}
           genre={genre}
+          trailerKey={trailerKey}
         />
 
         <View style={styles.overviewContainer}>

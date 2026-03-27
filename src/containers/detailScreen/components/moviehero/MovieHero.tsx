@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Linking, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { SvgIcon } from '@/components/svgicon';
 import { colors } from '@/theme/colors';
@@ -13,6 +13,7 @@ interface MovieHeroProps {
   year: string;
   duration: number;
   genre: string;
+  trailerKey?: string | null;
 }
 
 export const MovieHero: React.FC<MovieHeroProps> = ({
@@ -23,8 +24,31 @@ export const MovieHero: React.FC<MovieHeroProps> = ({
   year,
   duration,
   genre,
+  trailerKey,
 }) => {
   const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
+  const handlePlayTrailer = async () => {
+    if (!trailerKey) {
+      Alert.alert('No Trailer', 'No trailer available for this movie');
+      return;
+    }
+
+    const youtubeUrl = `https://www.youtube.com/watch?v=${trailerKey}`;
+    const youtubeAppUrl = `vnd.youtube://watch?v=${trailerKey}`;
+
+    try {
+      const canOpenApp = await Linking.canOpenURL(youtubeAppUrl);
+      if (canOpenApp) {
+        await Linking.openURL(youtubeAppUrl);
+      } else {
+        await Linking.openURL(youtubeUrl);
+      }
+    } catch (error) {
+      console.error('Error opening trailer:', error);
+      Alert.alert('Error', 'Could not open trailer');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -46,9 +70,14 @@ export const MovieHero: React.FC<MovieHeroProps> = ({
           style={styles.gradient}
         />
 
-        <TouchableOpacity style={styles.playButton}>
-          <SvgIcon name="play" size={32} color={colors.text.primary} />
-        </TouchableOpacity>
+        {trailerKey && (
+          <TouchableOpacity
+            style={styles.playButton}
+            onPress={handlePlayTrailer}
+          >
+            <SvgIcon name="play" size={32} color={colors.text.primary} />
+          </TouchableOpacity>
+        )}
       </View>
 
       <View style={styles.contentContainer}>
