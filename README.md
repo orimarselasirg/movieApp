@@ -1,97 +1,138 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Movie App - Technical Answers
 
-# Getting Started
+## 1. What does the single responsibility principle consist of? What's its purpose?
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
-## Step 1: Start Metro
+The **Single Responsibility Principle** from SOLID principles, ensures that a class or function is focused on doing only one thing. This allows us to modularize functionality and assign clear, unique responsibilities, which over time helps us identify well-defined behaviors within classes across the project.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+An example of the Single Responsibility Principle would be creating a class dedicated solely to handling phone calls. This class would contain methods aligned with that single responsibility, such as making a call, leaving a message, answering, and hanging up.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+## 2. What characteristics, in your opinion, does "good" code or clean code have?
 
-# OR using Yarn
-yarn start
-```
+**Clean code** is code that is easy to read, understand, maintain, and extend. The main characteristics are:
 
-## Step 2: Build and run your app
+### Readability and Clarity
+- Descriptive and meaningful names for variables, functions, and components
+- Self-explanatory code that minimizes the need for comments
+- Logical structure and clear control flow
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
 
-### Android
+### Modularity and Organization
+- Clear separation of responsibilities (SRP)
+- Logical and consistent folder structure
+- Small and focused components
 
-```sh
-# Using npm
-npm run android
+### DRY (Don't Repeat Yourself)
+- No code duplication
+- Reusability through components, hooks, and utility functions
+- Extraction of common logic
 
-# OR using Yarn
-yarn android
-```
 
-### iOS
+### Strong Typing (TypeScript)
+- Use of explicit types and interfaces
+- Avoid `any` in favor of specific types
+- Type safety that prevents runtime errors
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### Testability
+- Code easy to test with unit tests
+- Business logic separated from UI
+- Injectable or mockable dependencies
 
-```sh
-bundle install
-```
+### Consistency
+- Uniform code style (ESLint, Prettier)
+- Consistent design patterns throughout the application
+- Coherent naming conventions
 
-Then, and every time you update your native dependencies, run:
+### Performance and Optimization
+- Appropriate use of `useMemo`, `useCallback`, `React.memo`
+- Lazy loading when necessary
+- Cache to reduce network calls
 
-```sh
-bundle exec pod install
-```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### Meaningful Documentation and Comments
+- Comments only when code cannot be self-explanatory
+- Documentation for complex functions or important business logic
+- Clear README with setup and usage instructions
 
-```sh
-# Using npm
-npm run ios
+### Maintainability
+- Easy to modify without breaking other parts
+- Low coupling between modules
+- High cohesion within each module
 
-# OR using Yarn
-yarn ios
-```
+---
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 3. Detail how you would do everything that you have not completed
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Current State Analysis:
 
-## Step 3: Modify your app
+The project has approximately **90-95%** of the functional requirements implemented. What's **complete**:
 
-Now that you have successfully run the app, let's make changes!
+TypeScript/React Native
+-TMDB API consumption
+-Popular category with horizontal scroll
+-Three categories (Now Playing, Upcoming, Top Rated)
+-Watch list persisted locally
+-Navigation to details
+-Option to view trailers
+-Search by name
+-Watch list screen
+-Offline support with cache
+-Unit tests
+-Good practices and scalable architecture
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### What's missing or needs adjustments:
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+---
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### 1. Animations and Transitions
 
-## Congratulations! :tada:
+**Status:** Not implemented
 
-You've successfully run and modified your React Native App. :partying_face:
+**What's missing?**
+- Navigation animations between screens
+- Smooth transitions when showing/hiding elements
+- Scroll and gesture animations
+- Animated visual feedback (buttons, favorites)
 
-### Now what?
+**How would I complete it?**
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+**Install React Native Reanimated**
 
-# Troubleshooting
+**Implementation of key animations**
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+**Animation when adding to favorites**
 
-# Learn More
+**Shared Element Transitions (image transition between screens)**
 
-To learn more about React Native, take a look at the following resources:
+**Fade in when loading movies**
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+**Parallax scroll in Hero**
+
+
+---
+
+### 2. Greater Test Coverage
+
+**Status:** Partially completed
+
+**What's tested?**
+- Hooks: `useFavorites`, `useNetworkStatus`, `useMovieDetail`, `useSearch`, `useWatchList`
+- Services: `cache.service`, `favorites.service`
+
+**What's missing?**
+- UI component tests
+- Integration tests
+- Navigation tests
+- E2E tests (optional)
+
+**How would I complete it?**
+
+**UI Component Tests**
+
+**Integration Tests**
+
+**E2E Tests with Detox (optional):**
+
