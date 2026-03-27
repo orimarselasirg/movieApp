@@ -7,6 +7,8 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   Home: undefined;
-  Search: undefined;
+  Search: {
+    query?: string;
+  };
   Watch: undefined;
 };

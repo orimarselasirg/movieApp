@@ -14,13 +14,21 @@ export function HomeHeader<T extends string, ItemT>({
   tabs,
   selectedTab,
   onSelectTab,
+  searchQuery,
+  onSearchChange,
+  onSearchSubmit,
 }: Readonly<HomeHeaderProps<T, ItemT>>) {
   return (
     <>
       <Title title={title} />
 
       <View style={styles.searchBarContainer}>
-        <SearchBar />
+        <SearchBar
+          value={searchQuery}
+          onChangeText={onSearchChange}
+          onSubmitEditing={onSearchSubmit}
+          placeholder="Search movies..."
+        />
       </View>
 
       <FlatList

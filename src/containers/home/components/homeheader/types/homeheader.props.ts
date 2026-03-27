@@ -9,4 +9,7 @@ export interface HomeHeaderProps<T extends string, ItemT> {
   tabs: Tab<T>[];
   selectedTab: T;
   onSelectTab: (tab: T) => void;
+  searchQuery: string;
+  onSearchChange: (text: string) => void;
+  onSearchSubmit: () => void;
 }

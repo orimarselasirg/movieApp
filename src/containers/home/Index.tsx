@@ -1,19 +1,26 @@
+import { useState } from 'react';
 import { FlatList } from 'react-native';
 import { Screen } from 'react-native-screens';
 import { useNavigation } from '@react-navigation/native';
+import { CompositeNavigationProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { FeaturedMovieCard, HomeHeader, LoadingFooter, MoviePosterCard } from './components';
 import { Loading } from '@/components/loading/Loading';
 import { OfflineIndicator } from '@/components/offlineindicator';
 import { useHome } from './hooks/useHome';
 import { FEATURED_WIDTH } from './components/featuredmoviecard/constant/constant';
-import { RootStackParamList } from '@/navigation';
+import { RootStackParamList, BottomTabParamList } from '@/navigation';
 import { styles } from './styles/home.style';
 
-type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+type HomeNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<BottomTabParamList, 'Home'>,
+  NativeStackNavigationProp<RootStackParamList>
+>;
 
 const Home = () => {
   const navigation = useNavigation<HomeNavigationProp>();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const {
     TABS,
@@ -28,6 +35,16 @@ const Home = () => {
 
   const handleMoviePress = (movieId: number) => {
     navigation.navigate('MovieDetail', { movieId });
+  };
+
+  const handleSearchChange = (text: string) => {
+    setSearchQuery(text);
+  };
+
+  const handleSearchSubmit = () => {
+    if (searchQuery.trim()) {
+      navigation.navigate('Search', { query: searchQuery.trim() });
+    }
   };
 
   if (loading) {
@@ -64,6 +81,9 @@ const Home = () => {
             tabs={TABS}
             selectedTab={selectedTab}
             onSelectTab={setSelectedTab}
+            searchQuery={searchQuery}
+            onSearchChange={handleSearchChange}
+            onSearchSubmit={handleSearchSubmit}
           />
         }
         ListFooterComponent={

@@ -8,6 +8,7 @@ import { colors } from "@/theme/colors";
 export const SearchBar: React.FC<SearchBarProps> = ({
   value,
   onChangeText,
+  onSubmitEditing,
   placeholder = "Search",
 }) => {
   return (
@@ -18,6 +19,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         placeholderTextColor={colors.text.inactive}
         value={value}
         onChangeText={onChangeText}
+        onSubmitEditing={onSubmitEditing}
+        returnKeyType="search"
       />
       <Text style={styles.searchIcon}>
         <SvgIcon

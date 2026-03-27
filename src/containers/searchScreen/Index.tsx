@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import { Screen } from 'react-native-screens';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SearchBar } from '@/components/searchBar/SearchBar';
 import { SearchHeader, MovieSearchCard, EmptyState } from './components';
@@ -9,13 +9,16 @@ import { LoadingFooter } from '../home/components';
 import { Loading } from '@/components/loading/Loading';
 import { OfflineIndicator } from '@/components/offlineindicator';
 import { useSearch } from './hooks/useSearch';
-import { RootStackParamList } from '@/navigation';
+import { RootStackParamList, BottomTabParamList } from '@/navigation';
 import { styles } from './styles/search.style';
 
 type SearchNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+type SearchRouteProp = RouteProp<BottomTabParamList, 'Search'>;
 
 const SearchScreen = () => {
   const navigation = useNavigation<SearchNavigationProp>();
+  const route = useRoute<SearchRouteProp>();
+  const initialQuery = route.params?.query;
 
   const {
     searchQuery,
@@ -24,7 +27,7 @@ const SearchScreen = () => {
     loadingMore,
     handleSearch,
     loadMoreResults,
-  } = useSearch();
+  } = useSearch(initialQuery);
 
   const handleMoviePress = (movieId: number) => {
     navigation.navigate('MovieDetail', { movieId });

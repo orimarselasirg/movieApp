@@ -7,9 +7,13 @@ export  const styles = StyleSheet.create({
     width: FEATURED_WIDTH,
     height: FEATURED_HEIGHT,
     marginRight: 20,
-    borderRadius: 16,
-    overflow: 'visible',
     position: 'relative',
+  },
+  imageContainer: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 16,
+    overflow: 'hidden',
   },
   featuredImage: {
     width: '100%',

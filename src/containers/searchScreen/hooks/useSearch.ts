@@ -4,8 +4,8 @@ import { cacheService } from '@/services/cache.service';
 import { useNetworkStatus } from '@/hooks/useNetworkStatus';
 import { SearchMovie, SearchResponse } from '../types/search.interface';
 
-export const useSearch = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+export const useSearch = (initialQuery?: string) => {
+  const [searchQuery, setSearchQuery] = useState(initialQuery || '');
   const [searchResults, setSearchResults] = useState<SearchMovie[]>([]);
   const [loading, setLoading] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -13,6 +13,7 @@ export const useSearch = () => {
   const [hasMore, setHasMore] = useState(true);
   const { isOnline } = useNetworkStatus();
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
+  const hasInitialized = useRef(false);
 
   const searchMovies = useCallback(
     async (query: string, page: number = 1) => {
@@ -117,12 +118,17 @@ export const useSearch = () => {
   );
 
   useEffect(() => {
+    if (initialQuery && !hasInitialized.current) {
+      hasInitialized.current = true;
+      searchMovies(initialQuery, 1);
+    }
+
     return () => {
       if (debounceTimer.current) {
         clearTimeout(debounceTimer.current);
       }
     };
-  }, []);
+  }, [initialQuery, searchMovies]);
 
   const loadMoreResults = useCallback(() => {
     if (!loadingMore && hasMore && searchQuery.trim()) {
