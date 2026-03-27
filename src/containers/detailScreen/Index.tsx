@@ -33,7 +33,7 @@ const MovieDetail = () => {
   };
 
   if (loading) {
-    return <Loading loadingText="Cargando detalles..." />;
+    return <Loading loadingText="Loading details..." />;
   }
 
   if (error || !movie) {
@@ -42,7 +42,7 @@ const MovieDetail = () => {
         <MovieDetailHeader isFavorite={false} onBookmarkPress={() => {}} />
         <View style={styles.errorContainer}>
           <Text style={styles.errorText}>
-            {error || 'No se pudo cargar la película'}
+            {error || 'Could not load the movie'}
           </Text>
         </View>
       </Screen>

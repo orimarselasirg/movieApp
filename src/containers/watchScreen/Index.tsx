@@ -21,7 +21,7 @@ const WatchScreen = () => {
   };
 
   if (loading) {
-    return <Loading loadingText="Cargando lista" />;
+    return <Loading loadingText="Loading list" />;
   }
 
   return (

@@ -56,7 +56,7 @@ export const WatchMovieCard: React.FC<WatchMovieCardProps> = ({
           <Text style={styles.detailIcon}>
             <SvgIcon name="clock" size={16} color={colors.text.primary} />
           </Text>
-          <Text style={styles.detailText}>{runtime} minutes</Text>
+          <Text style={styles.detailText}>{runtime} Minutes</Text>
         </View>
       </View>
     </TouchableOpacity>

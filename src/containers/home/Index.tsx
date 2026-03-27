@@ -30,7 +30,7 @@ const Home = () => {
   };
 
   if (loading) {
-    return <Loading loadingText='Cargando pelicula'/>
+    return <Loading loadingText='Loading movies'/>
   }
 
   return (

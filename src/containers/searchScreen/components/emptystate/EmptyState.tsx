@@ -24,7 +24,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
           <SvgIcon name="search" size={80} color={colors.text.primary} />
         </Text>
         <Text style={styles.emptyText}>
-          Busca tus películas favoritas
+          Search your favorite movies
         </Text>
       </View>
     );

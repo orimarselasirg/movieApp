@@ -72,7 +72,7 @@ export const MovieSearchCard: React.FC<MovieSearchCardProps> = ({
               color={colors.text.primary}
             />
           </Text>
-          <Text style={styles.detailText}>{runtime} minutes</Text>
+          <Text style={styles.detailText}>{runtime} Minutes</Text>
         </View>
       </View>
     </TouchableOpacity>

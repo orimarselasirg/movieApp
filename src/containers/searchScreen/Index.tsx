@@ -30,7 +30,7 @@ const SearchScreen = () => {
   };
 
   if (loading && searchResults.length === 0) {
-    return <Loading loadingText="Buscando películas..." />;
+    return <Loading loadingText="Searching movies..." />;
   }
 
   return (
@@ -41,7 +41,7 @@ const SearchScreen = () => {
         <SearchBar
           value={searchQuery}
           onChangeText={handleSearch}
-          placeholder="Buscar películas..."
+          placeholder="Search movies..."
         />
       </View>
 

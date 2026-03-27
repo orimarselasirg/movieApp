@@ -27,7 +27,7 @@ export const useMovieDetail = (movieId: number) => {
         setError(null);
       } catch (err) {
         console.error('Error fetching movie detail:', err);
-        setError('Error al cargar los detalles de la película');
+        setError('Error loading movie details');
       } finally {
         setLoading(false);
       }

@@ -6,7 +6,7 @@ import { LoadingFooterProps } from './types/loadingposter.props';
 
 export const LoadingFooter: React.FC<LoadingFooterProps> = ({
   isLoading,
-  loadingText = 'Cargando más películas...',
+  loadingText = 'Loading more movies...',
 }) => {
   if (!isLoading) return null;
 
