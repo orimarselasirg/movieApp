@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { SvgIcon } from '@/components/svgicon';
 import { GENRE_MAP, IMAGE_BASE_URL } from '@/constants/genres';
+import { colors } from '@/theme/colors';
 import { styles } from './styles/watchmoviecard.style';
 import { WatchMovieCardProps } from './types/watchmoviecard.props';
 
@@ -32,28 +33,28 @@ export const WatchMovieCard: React.FC<WatchMovieCardProps> = ({
 
         <View style={styles.ratingContainer}>
           <Text style={styles.star}>
-            <SvgIcon name="star" size={16} color="#FF8700" />
+            <SvgIcon name="star" size={16} color={colors.accent.rating} />
           </Text>
           <Text style={styles.rating}>{rating.toFixed(1)}</Text>
         </View>
 
         <View style={styles.detailRow}>
           <Text style={styles.detailIcon}>
-            <SvgIcon name="ticket" size={16} color="white" />
+            <SvgIcon name="ticket" size={16} color={colors.text.primary} />
           </Text>
           <Text style={styles.detailText}>{genre}</Text>
         </View>
 
         <View style={styles.detailRow}>
           <Text style={styles.detailIcon}>
-            <SvgIcon name="calendar" size={16} color="white" />
+            <SvgIcon name="calendar" size={16} color={colors.text.primary} />
           </Text>
           <Text style={styles.detailText}>{year}</Text>
         </View>
 
         <View style={styles.detailRow}>
           <Text style={styles.detailIcon}>
-            <SvgIcon name="clock" size={16} color="white" />
+            <SvgIcon name="clock" size={16} color={colors.text.primary} />
           </Text>
           <Text style={styles.detailText}>{runtime} minutes</Text>
         </View>

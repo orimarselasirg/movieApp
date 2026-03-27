@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '@/theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   errorText: {
     fontSize: 16,
-    color: '#fff',
+    color: colors.text.primary,
     textAlign: 'center',
   },
   overviewContainer: {
@@ -25,12 +26,12 @@ export const styles = StyleSheet.create({
   overviewTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#fff',
+    color: colors.text.primary,
     marginBottom: 12,
   },
   overviewText: {
     fontSize: 14,
-    color: '#92929D',
+    color: colors.text.secondary,
     lineHeight: 22,
   },
 });

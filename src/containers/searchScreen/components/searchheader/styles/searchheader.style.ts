@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '@/theme/colors';
 
 export const styles = StyleSheet.create({
   header: {
@@ -16,12 +17,12 @@ export const styles = StyleSheet.create({
   },
   backIcon: {
     fontSize: 28,
-    color: '#fff',
+    color: colors.text.primary,
   },
   title: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#fff',
+    color: colors.text.primary,
     flex: 1,
     textAlign: 'center',
   },
@@ -33,6 +34,6 @@ export const styles = StyleSheet.create({
   },
   infoIcon: {
     fontSize: 24,
-    color: '#fff',
+    color: colors.text.primary,
   },
 });

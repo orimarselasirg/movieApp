@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '@/theme/colors';
 
 const { width } = Dimensions.get('window');
 
@@ -54,7 +55,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#fff',
+    color: colors.text.primary,
     marginBottom: 15,
   },
   detailsRow: {
@@ -66,7 +67,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    backgroundColor: '#25283652',
+    backgroundColor: colors.background.overlayLight,
     borderRadius: 80,
     paddingVertical: 3,
     paddingHorizontal: 5
@@ -74,7 +75,7 @@ export const styles = StyleSheet.create({
   rating: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#FF8700',
+    color: colors.accent.rating,
     marginLeft: 4,
   },
   metaRow: {
@@ -88,13 +89,13 @@ export const styles = StyleSheet.create({
   },
   metaText: {
     fontSize: 12,
-    color: '#92929D',
+    color: colors.text.secondary,
     marginLeft: 4,
   },
   separator: {
     width: 1,
     height: 12,
-    backgroundColor: '#92929D',
+    backgroundColor: colors.text.secondary,
     marginHorizontal: 8,
   },
 });

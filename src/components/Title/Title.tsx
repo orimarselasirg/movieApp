@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { colors } from '@/theme/colors'
 
 export const Title = ({title}: {title: string}) => {
   return (
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   title: {
-    color: '#fff',
+    color: colors.text.primary,
     fontSize: 18,
     fontWeight: '600',
   },

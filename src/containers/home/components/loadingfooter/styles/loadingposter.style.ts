@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/theme/colors";
 
 export const styles = StyleSheet.create({
   footerLoader: {
@@ -7,7 +8,7 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   footerText: {
-    color: '#67686D',
+    color: colors.text.inactive,
     fontSize: 14,
     marginTop: 10,
   },

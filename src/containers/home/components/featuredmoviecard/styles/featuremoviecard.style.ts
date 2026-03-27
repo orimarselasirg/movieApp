@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/theme/colors";
 import { FEATURED_HEIGHT, FEATURED_WIDTH } from "../constant/constant";
 
 export  const styles = StyleSheet.create({
@@ -32,7 +33,7 @@ export  const styles = StyleSheet.create({
     overflow: "visible",
   },
   featuredNumberText: {
-    color: '#3A3F47',
+    color: colors.background.secondary,
     fontSize: 90,
     fontWeight: '900',
     position: 'absolute',

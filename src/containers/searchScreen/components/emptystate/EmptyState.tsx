@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { SvgIcon } from '@/components/svgicon';
+import { colors } from '@/theme/colors';
 import { styles } from './styles/emptystate.style';
 
 interface EmptyStateProps {
@@ -20,7 +21,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
     return (
       <View style={styles.emptyContainer}>
         <Text style={styles.emptyIcon}>
-          <SvgIcon name="search" size={80} color="white" />
+          <SvgIcon name="search" size={80} color={colors.text.primary} />
         </Text>
         <Text style={styles.emptyText}>
           Busca tus películas favoritas

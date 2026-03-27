@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '@/theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -40,7 +41,7 @@ export const styles = StyleSheet.create({
   },
   emptyText2: {
     fontSize: 14,
-    color: '#92929D',
+    color: colors.text.secondary,
     textAlign: 'center',
   },
   listContainer: {

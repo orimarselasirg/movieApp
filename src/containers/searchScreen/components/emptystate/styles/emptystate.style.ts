@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '@/theme/colors';
 
 export const styles = StyleSheet.create({
   emptyContainer: {
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 18,
-    color: '#fff',
+    color: colors.text.primary,
     textAlign: 'center',
     fontWeight: '600',
   },
@@ -31,7 +32,7 @@ export const styles = StyleSheet.create({
   },
   emptyText2: {
     fontSize: 14,
-    color: '#92929D',
+    color: colors.text.secondary,
     textAlign: 'center',
     lineHeight: 20,
   },

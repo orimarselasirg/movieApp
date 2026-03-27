@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SvgIcon } from '@/components/svgicon';
+import { colors } from '@/theme/colors';
 import { styles } from './styles/moviedetailheader.style';
 
 interface MovieDetailHeaderProps {
@@ -30,7 +31,7 @@ export const MovieDetailHeader: React.FC<MovieDetailHeaderProps> = ({
         <SvgIcon
           name="bookmark"
           size={24}
-          color={isFavorite ? '#FF8700' : 'white'}
+          color={isFavorite ? colors.accent.rating : colors.text.primary}
         />
       </TouchableOpacity>
     </View>

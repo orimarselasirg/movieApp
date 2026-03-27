@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { IMAGE_BASE_URL, GENRE_MAP } from '../../constant/constant';
+import { colors } from '@/theme/colors';
 import { styles } from './styles/moviesearchcard.style';
 import { SvgIcon } from '@/components/svgicon';
 import { MovieSearchCardProps } from './types/moviesearch.props';
@@ -35,7 +36,7 @@ export const MovieSearchCard: React.FC<MovieSearchCardProps> = ({
             <SvgIcon
               name="star"
               size={16}
-              color='#FF8700'
+              color={colors.accent.rating}
             />
           </Text>
           <Text style={styles.rating}>{rating.toFixed(1)}</Text>
@@ -46,7 +47,7 @@ export const MovieSearchCard: React.FC<MovieSearchCardProps> = ({
             <SvgIcon
               name="ticket"
               size={16}
-              color='white'
+              color={colors.text.primary}
             />
           </Text>
           <Text style={styles.detailText}>{genre}</Text>
@@ -57,7 +58,7 @@ export const MovieSearchCard: React.FC<MovieSearchCardProps> = ({
             <SvgIcon
               name="calendar"
               size={16}
-              color='white'
+              color={colors.text.primary}
             />
           </Text>
           <Text style={styles.detailText}>{year}</Text>
@@ -68,7 +69,7 @@ export const MovieSearchCard: React.FC<MovieSearchCardProps> = ({
             <SvgIcon
               name="clock"
               size={16}
-              color='white'
+              color={colors.text.primary}
             />
           </Text>
           <Text style={styles.detailText}>{runtime} minutes</Text>

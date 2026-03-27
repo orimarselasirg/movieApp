@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '@/theme/colors';
 
 export const styles = StyleSheet.create({
   card: {
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#fff',
+    color: colors.text.primary,
     marginBottom: 8,
   },
   ratingContainer: {
@@ -37,7 +38,7 @@ export const styles = StyleSheet.create({
   rating: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#FF8700',
+    color: colors.accent.rating,
   },
   detailRow: {
     flexDirection: 'row',
@@ -51,6 +52,6 @@ export const styles = StyleSheet.create({
   },
   detailText: {
     fontSize: 13,
-    color: '#92929D',
+    color: colors.text.secondary,
   },
 });

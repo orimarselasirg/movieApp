@@ -18,13 +18,13 @@ const BottomTabNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#0296E5',
-        tabBarInactiveTintColor: '#67686D',
+        tabBarActiveTintColor: colors.accent.primary,
+        tabBarInactiveTintColor: colors.text.inactive,
         sceneStyle: { backgroundColor: colors.background.primary },
         tabBarStyle: {
           backgroundColor: colors.background.primary,
           borderTopWidth: 1,
-          borderTopColor: '#0296E5',
+          borderTopColor: colors.accent.primary,
           paddingBottom: 5,
           paddingTop: 10,
           height: 70,

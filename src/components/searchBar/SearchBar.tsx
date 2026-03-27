@@ -2,6 +2,7 @@ import { Text, View, TextInput } from "react-native"
 import { SvgIcon } from "../svgicon";
 import { styles } from "./styles/searchbar.style";
 import { SearchBarProps } from "./types/searchbar.props";
+import { colors } from "@/theme/colors";
 
 
 export const SearchBar: React.FC<SearchBarProps> = ({
@@ -14,14 +15,14 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       <TextInput
         style={styles.searchInput}
         placeholder={placeholder}
-        placeholderTextColor="#67686D"
+        placeholderTextColor={colors.text.inactive}
         value={value}
         onChangeText={onChangeText}
       />
       <Text style={styles.searchIcon}>
         <SvgIcon
           name="search"
-          color="#67686D"
+          color={colors.text.inactive}
           size={26}
         />
       </Text>

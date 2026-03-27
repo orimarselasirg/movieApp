@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { SvgIcon } from '@/components/svgicon';
+import { colors } from '@/theme/colors';
 import { styles } from './styles/moviehero.style';
 
 interface MovieHeroProps {
@@ -35,18 +36,18 @@ export const MovieHero: React.FC<MovieHeroProps> = ({
         />
         <View style={{...styles.detailsRow, position: "absolute", bottom: 0, right: 10, zIndex: 100}}>
           <View style={styles.ratingContainer}>
-            <SvgIcon name="star" size={16} color="#FF8700" />
+            <SvgIcon name="star" size={16} color={colors.accent.rating} />
             <Text style={styles.rating}>{rating.toFixed(1)}</Text>
           </View>
         </View>
 
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.8)', '#1F1D2B']}
+          colors={[colors.common.transparent, colors.background.overlay, colors.background.tertiary]}
           style={styles.gradient}
         />
 
         <TouchableOpacity style={styles.playButton}>
-          <SvgIcon name="play" size={32} color="white" />
+          <SvgIcon name="play" size={32} color={colors.text.primary} />
         </TouchableOpacity>
       </View>
 
@@ -71,21 +72,21 @@ export const MovieHero: React.FC<MovieHeroProps> = ({
       }}>
         <View style={styles.metaRow}>
           <View style={styles.metaItem}>
-            <SvgIcon name="calendar" size={14} color="#92929D" />
+            <SvgIcon name="calendar" size={14} color={colors.text.secondary} />
             <Text style={styles.metaText}>{year}</Text>
           </View>
 
           <View style={styles.separator} />
 
           <View style={styles.metaItem}>
-            <SvgIcon name="clock" size={14} color="#92929D" />
+            <SvgIcon name="clock" size={14} color={colors.text.secondary} />
             <Text style={styles.metaText}>{duration} Minutes</Text>
           </View>
 
           <View style={styles.separator} />
 
           <View style={styles.metaItem}>
-            <SvgIcon name="ticket" size={14} color="#92929D" />
+            <SvgIcon name="ticket" size={14} color={colors.text.secondary} />
             <Text style={styles.metaText}>{genre}</Text>
           </View>
         </View>
