@@ -6,9 +6,10 @@ import { SvgIcon } from '@/components/svgicon';
 
 interface SearchHeaderProps {
   title: string;
+  showIcon?: boolean
 }
 
-export const SearchHeader: React.FC<SearchHeaderProps> = ({ title }) => {
+export const SearchHeader: React.FC<SearchHeaderProps> = ({ title, showIcon=true }) => {
   const navigation = useNavigation();
 
   return (
@@ -27,9 +28,11 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({ title }) => {
       </TouchableOpacity>
 
       <Text style={styles.title}>{title}</Text>
-
       <TouchableOpacity style={styles.infoButton}>
-        <Text style={styles.infoIcon}>ⓘ</Text>
+        {
+          showIcon &&
+            <Text style={styles.infoIcon}>ⓘ</Text>
+        }
       </TouchableOpacity>
     </View>
   );

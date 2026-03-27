@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { IMAGE_BASE_URL } from '../../constant/constant';
 import { styles } from './styles/featuremoviecard.style';
@@ -8,9 +8,10 @@ import { FeaturedMovieCardProps } from './types/featuremovie.props';
 export const FeaturedMovieCard: React.FC<FeaturedMovieCardProps> = ({
   posterPath,
   index,
+  onPress,
 }) => {
   return (
-    <View style={styles.featuredCard}>
+    <TouchableOpacity style={styles.featuredCard} onPress={onPress}>
       <Image
         source={{ uri: `${IMAGE_BASE_URL}${posterPath}` }}
         style={styles.featuredImage}
@@ -25,7 +26,7 @@ export const FeaturedMovieCard: React.FC<FeaturedMovieCardProps> = ({
           {index + 1}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

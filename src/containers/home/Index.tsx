@@ -1,12 +1,18 @@
 import { FlatList } from 'react-native';
 import { Screen } from 'react-native-screens';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FeaturedMovieCard, HomeHeader, LoadingFooter, MoviePosterCard } from './components';
 import { Loading } from '@/components/loading/Loading';
 import { useHome } from './hooks/useHome';
 import { FEATURED_WIDTH } from './components/featuredmoviecard/constant/constant';
+import { RootStackParamList } from '@/navigation';
 import { styles } from './styles/home.style';
 
+type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const Home = () => {
+  const navigation = useNavigation<HomeNavigationProp>();
 
   const {
     TABS,
@@ -18,19 +24,24 @@ const Home = () => {
     loadingMore,
     selectedTab
   } = useHome()
- 
+
+  const handleMoviePress = (movieId: number) => {
+    navigation.navigate('MovieDetail', { movieId });
+  };
+
   if (loading) {
     return <Loading loadingText='Cargando pelicula'/>
   }
 
   return (
     <Screen style={styles.container}>
-      
+
       <FlatList
         data={getSelectedMovies()}
-        renderItem={({ item }) => 
+        renderItem={({ item }) =>
           <MoviePosterCard
             posterPath={item.poster_path}
+            onPress={() => handleMoviePress(item.id)}
           />
         }
         keyExtractor={(item) => `${item.id}`}
@@ -40,8 +51,12 @@ const Home = () => {
           <HomeHeader
             title="What do you want to watch?"
             popularMovies={popularMovies}
-            renderFeaturedMovie={({ item, index }) => (               
-              <FeaturedMovieCard posterPath={item.poster_path} index={index} />                                                                                                  
+            renderFeaturedMovie={({ item, index }) => (
+              <FeaturedMovieCard
+                posterPath={item.poster_path}
+                index={index}
+                onPress={() => handleMoviePress(item.id)}
+              />
             )}
             featuredWidth={FEATURED_WIDTH}
             tabs={TABS}

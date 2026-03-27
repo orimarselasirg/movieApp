@@ -1,14 +1,21 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import { Screen } from 'react-native-screens';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SearchBar } from '@/components/searchBar/SearchBar';
 import { SearchHeader, MovieSearchCard, EmptyState } from './components';
 import { LoadingFooter } from '../home/components';
 import { Loading } from '@/components/loading/Loading';
 import { useSearch } from './hooks/useSearch';
+import { RootStackParamList } from '@/navigation';
 import { styles } from './styles/search.style';
 
+type SearchNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const SearchScreen = () => {
+  const navigation = useNavigation<SearchNavigationProp>();
+
   const {
     searchQuery,
     searchResults,
@@ -17,6 +24,10 @@ const SearchScreen = () => {
     handleSearch,
     loadMoreResults,
   } = useSearch();
+
+  const handleMoviePress = (movieId: number) => {
+    navigation.navigate('MovieDetail', { movieId });
+  };
 
   if (loading && searchResults.length === 0) {
     return <Loading loadingText="Buscando películas..." />;
@@ -43,6 +54,7 @@ const SearchScreen = () => {
             rating={item.vote_average}
             genreIds={item.genre_ids}
             releaseDate={item.release_date}
+            onPress={() => handleMoviePress(item.id)}
           />
         )}
         keyExtractor={(item) => item.id.toString()}

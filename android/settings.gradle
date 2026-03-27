@@ -1,6 +1,21 @@
 pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
 plugins { id("com.facebook.react.settings") }
 extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+        }
+        maven {
+            url = uri("$rootDir/../node_modules/@react-native-async-storage/async-storage/android/local_repo")
+        }
+    }
+}
+
 rootProject.name = 'movieApp'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')

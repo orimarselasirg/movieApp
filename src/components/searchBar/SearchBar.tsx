@@ -1,11 +1,8 @@
-import { Text, View, StyleSheet, TextInput } from "react-native"
+import { Text, View, TextInput } from "react-native"
 import { SvgIcon } from "../svgicon";
+import { styles } from "./styles/searchbar.style";
+import { SearchBarProps } from "./types/searchbar.props";
 
-interface SearchBarProps {
-  value?: string;
-  onChangeText?: (text: string) => void;
-  placeholder?: string;
-}
 
 export const SearchBar: React.FC<SearchBarProps> = ({
   value,
@@ -31,23 +28,3 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor:'#3A3F47',
-    borderRadius: 16,
-    paddingHorizontal: 20,
-    height: 50,
-  },
-  searchInput: {
-    flex: 1,
-    color: '#fff',
-    fontSize: 16,
-  },
-  searchIcon: {
-    fontSize: 20,
-    opacity: 0.5,
-  },
-})

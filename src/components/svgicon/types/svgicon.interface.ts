@@ -11,7 +11,8 @@ export type IconName =
   | 'calendar'
   | 'play'
   | 'close'
-  | 'ticket';
+  | 'ticket'
+  | 'bookmarkOutline'
 
 export interface SvgIconProps {
   name: IconName;
