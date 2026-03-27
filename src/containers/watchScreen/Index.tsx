@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { WatchEmptyState, WatchMovieCard } from './components';
 import { useWatchList } from './hooks/useWatchList';
 import { Loading } from '@/components/loading/Loading';
+import { OfflineIndicator } from '@/components/offlineindicator';
 import { RootStackParamList } from '@/navigation';
 import { styles } from './styles/watchscreen.style';
 import { SearchHeader } from '../searchScreen/components';
@@ -26,7 +27,8 @@ const WatchScreen = () => {
 
   return (
     <Screen style={styles.container}>
-      
+      <OfflineIndicator />
+
       <SearchHeader
         title='Watch list'
         showIcon={false}

@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FeaturedMovieCard, HomeHeader, LoadingFooter, MoviePosterCard } from './components';
 import { Loading } from '@/components/loading/Loading';
+import { OfflineIndicator } from '@/components/offlineindicator';
 import { useHome } from './hooks/useHome';
 import { FEATURED_WIDTH } from './components/featuredmoviecard/constant/constant';
 import { RootStackParamList } from '@/navigation';
@@ -35,6 +36,7 @@ const Home = () => {
 
   return (
     <Screen style={styles.container}>
+      <OfflineIndicator />
 
       <FlatList
         data={getSelectedMovies()}

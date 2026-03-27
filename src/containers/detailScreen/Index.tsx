@@ -7,6 +7,7 @@ import { MovieDetailHeader, MovieHero } from './components';
 import { useMovieDetail } from './hooks/useMovieDetail';
 import { useFavorites } from '@/hooks/useFavorites';
 import { Loading } from '@/components/loading/Loading';
+import { OfflineIndicator } from '@/components/offlineindicator';
 import { styles } from './styles/moviedetail.style';
 
 type MovieDetailRouteProp = RouteProp<RootStackParamList, 'MovieDetail'>;
@@ -56,6 +57,7 @@ const MovieDetail = () => {
 
   return (
     <Screen style={styles.container}>
+      <OfflineIndicator />
       <MovieDetailHeader
         isFavorite={isFavorite}
         onBookmarkPress={handleBookmarkPress}

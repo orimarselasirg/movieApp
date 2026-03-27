@@ -7,6 +7,7 @@ import { SearchBar } from '@/components/searchBar/SearchBar';
 import { SearchHeader, MovieSearchCard, EmptyState } from './components';
 import { LoadingFooter } from '../home/components';
 import { Loading } from '@/components/loading/Loading';
+import { OfflineIndicator } from '@/components/offlineindicator';
 import { useSearch } from './hooks/useSearch';
 import { RootStackParamList } from '@/navigation';
 import { styles } from './styles/search.style';
@@ -35,6 +36,7 @@ const SearchScreen = () => {
 
   return (
     <Screen style={styles.container}>
+      <OfflineIndicator />
       <SearchHeader title="Search" />
 
       <View style={styles.searchBarContainer}>
